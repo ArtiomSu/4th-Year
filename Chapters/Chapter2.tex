@@ -88,12 +88,30 @@ There are also algorithms that use techniques found in both supervised and unsup
 
 Another interesting suite of machine learning algorithms is classified into Reinforcement Learning \cite{reinforcementLearning}. These algorithms interact with the environment and received rewards or penalties based on the actions carried out within the environment. If the action carried out receives a reward it is likely that the same action will be repeated again. 
 
+%
+%
+% End of machine learning
+%
+%
+
 Achieving synchronisation \cite{sync} is an important part of this project. 
 Synchronisation is the process of making two or more data storage devices or programs (in the same or different computers) having exactly the same information at a given time.
 Synchronisation is common in multi-threaded software where any number of threads can manipulate the same set of data or even wait for a certain thread to finish execution. For example you wouldn't want your parent thread to finish before the child threads as this can lead to data loss and resources being hogged by a zombie thread. Pthread \cite{pthread} is a great API that can be used for handling threads and shared data between those threads. 
+Data Synchronisation \cite{datasync} is an on going process of having the same data present on selected servers. Large databases that operate on multiple servers usually use data versioning to keep check on the latest data. MongoDB is one such database \cite{mongo} this is the reason for a delay when you upload a YouTube video (YouTube doesn't use MongoDB this is just an example) it might not be instantly available for other users to watch as it needs to propagate through a number of servers hosting the databases.
+Popular websites use data synchronisation for mirroring websites. This allows users to be distributed among relatively identical servers in order to avoid bandwidth bottlenecks as well as increasing availability just in case one server dies users will be redirected to a different mirror seamlessly without interruptions. 
+File synchronisation is the method of choice for home backups this is preferable over the traditional backup methods where data is simply dumped onto another hard drive. This process prevents copying identical files which leads to faster transfers and a less chance of errors occurring. My personal favourite file synchronisation tool is Unison \cite{unison}. It is also possible to synchronise folders over the network between two home computes, Unison does this through SSH.
+Blockchain \cite{blockChain} the method used for secure crypto ledgers which also relies on synchronisation between peers. Synchronisation for the ethereum crypto currency blockchain can be expressed as follows. "Synchronisation proceeds from head to known block by requesting and fetching block hashes iteratively from young to old (head to root). Based on block hashes, blocks can be requested. Based on the parenthash of a block, independent sections can be linked and a chain established. By checking if a block is found in the block chain the root of the blockpool can be established and the chain can be inserted in the blockchain."
+%#######################################################
+%                                                   
+% check if its ok to just dump stuff from the web.
+%
+%#######################################################
 
-
-
+%
+%
+% End of sync
+%
+%
 
 
 
@@ -102,7 +120,7 @@ Synchronisation is common in multi-threaded software where any number of threads
 
 %
 %
-% Stick these somehwere maybe
+% Stick these somehwere maybe 
 %
 %
 Machine learning has been known to be used for secure communications although it is not clear if it is used in servers with valuable data. Google's AI successfully created secure algorithms \cite{GoogleAi1} that use inhuman cryptographic schemes making them harder to crack. This technique is called GAN Cryptography \cite{GoogleAi2} for which a research paper can be found.
@@ -112,7 +130,11 @@ Currently dynamic encryption is exercised in voip phone calls by a company known
 
 This project will be compatible with NodeJs because it is one of the fastest growing server platform \cite{NodeJs} that can be easily set up and supports a large amount of modules.
 
-
+%
+%
+% Stick these somehwere maybe ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+%
+%
 
 
 Position your topic within Computer Science. This activity will aid you in your literature review also. We zoom out to see three levels:
