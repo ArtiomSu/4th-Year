@@ -67,11 +67,47 @@ If the device on which the algorithm is performing on is an embedded device you 
 %
 %
 
+Machine learning is a category of algorithms that allow systems to automatically learn and improve from experience without being explicitly programmed \cite{machineLearning}. Basically this means that the algorithm can update when input is received this in turn updates the the output even if the same inputs are used later on.
+Typically machine learning software processes large amounts of data and looks for patterns constantly updating either variables or adding logic branches. Recommendation engines use machine learning to personalise the logged in users feed. So if user one looked at product X and user 2 bought product X and also bought product Y then user one will most likely see product Y as a recommendation. There are three types of recommendation systems. Collaborative Filtering \cite{recommendation} where similarities between customers is taken into account.
+Content Based Filtering \cite{recommendation} is when the liked and purchased items are taken into account. See figure \ref{fig:recommendation} for illustration.
+Finally there is Hybrid Recommendation Systems which is a mix between the previous two and is typically the one used in industry.
+
+\begin{figure}[ht]
+  \centering
+      \includegraphics[width=0.9\textwidth]{Figures/recommendationEngine.png}
+  \caption[An example of recommendation engine]{An example of recommendation engine\cite{recommendation}}
+  \label{fig:recommendation}
+\end{figure}
+
+The most common machine learning algorithms are often classified as supervised learning and unsupervised learning.
+Supervised learning \cite{supervised} relies on a set of training data which is constructed of various inputs and and correct outputs corresponding to those inputs usually labels. The training data is usually left unchanged and when the test data or data taken from the current user is used as input the algorithm attempts to correctly classify the data based on the training data. The disadvantage of supervised learning is if the incoming data is radically different from the test data the probability of classifying the data into the correct label will be similar and sometimes even lower than classifying into the incorrect label. However because the training data exists it can be quite quicker to setup a supervised learning system then an unsupervised.
+
+Unsupervised learning \cite{unsupervised} uses data that is neither classified or labelled. This allows the algorithm to draw its own conclusions about the data as well as discover hidden structures. If some of the data is similar in any way to another piece of data the algorithm tends to group those pieces of data together. Unsupervised learning is generally more complex and can be more accurate since the algorithm might find subtle discrepancies that might be impossible to notice for a human. This however can lead to unpredictable behaviour where there is expected to be two classifications but instead the data is classified into a lot more than two classifications. Unsupervised learning algorithms typically require more training data than supervised in order to detect similarities and come up with labels.
+
+There are also algorithms that use techniques found in both supervised and unsupervised machine learning these are called Semi-supervised \cite{machineLearning0} machine learning these use a much larger amount of unlabelled training data than labelled. These types of algorithms usually tend to be more accurate than supervised and unsupervised alone.
+
+Another interesting suite of machine learning algorithms is classified into Reinforcement Learning \cite{reinforcementLearning}. These algorithms interact with the environment and received rewards or penalties based on the actions carried out within the environment. If the action carried out receives a reward it is likely that the same action will be repeated again. 
+
+Achieving synchronisation \cite{sync} is an important part of this project. 
+Synchronisation is the process of making two or more data storage devices or programs (in the same or different computers) having exactly the same information at a given time.
+Synchronisation is common in multi-threaded software where any number of threads can manipulate the same set of data or even wait for a certain thread to finish execution. For example you wouldn't want your parent thread to finish before the child threads as this can lead to data loss and resources being hogged by a zombie thread. Pthread \cite{pthread} is a great API that can be used for handling threads and shared data between those threads. 
+
+
+
+
+
+
+
+
+
+%
+%
+% Stick these somehwere maybe
+%
+%
 Machine learning has been known to be used for secure communications although it is not clear if it is used in servers with valuable data. Google's AI successfully created secure algorithms \cite{GoogleAi1} that use inhuman cryptographic schemes making them harder to crack. This technique is called GAN Cryptography \cite{GoogleAi2} for which a research paper can be found.
 
 Currently dynamic encryption is exercised in voip phone calls by a company known as Dencrypt \cite{dencrypt} according to the explanation of their proprietary algorithm they use a wrapper on top of AES-256 which is a chosen algorithm that is discarded when the data transfer is finished.
-
-
 
 
 This project will be compatible with NodeJs because it is one of the fastest growing server platform \cite{NodeJs} that can be easily set up and supports a large amount of modules.
