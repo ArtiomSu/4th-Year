@@ -1,14 +1,24 @@
 \chapter{Background}
 \label{chap:background}
 \lhead{\emph{Background}}
+%
+%
+% Notes Start
+%
+%
 The key question to answer in this chapter is: "What has been done/is being done". 
 
 This chapter comprises around 4000 words and should put your project into context within Computer Science. Your focus here should be on the final section "Current State of the Art". This should be at least 2500 of the 4000 words of this section.
-
+%
+%
+% Notes End
+%
+%
 \section{Thematic Area within Computer Science}
 The Core topic of this project is safely and dynamically encrypting messages between two parties. The communication will rely on multiple functioning NodeJs servers for transfer of encrypted messages. 
 
 The core areas under which my project falls under is cryptography, security for encrypting and securing information. Machine learning will be used for establishing methods of secure information exchange. And finally networking due to the setup required of communicating between different servers and sending encrypted information.
+
 
 Encryption \cite{encryptionDefinition} is when the plaintext of any form of data that can be easily read is converted to an unreadable encoded version. In order to retrieve the original data for viewing or processing it must be decoded using a specific algorithm and more than likely some sort of key, usually a lengthy password. Encryption may be used for encrypting files and operating systems on a user's hard drive. In today's world encryption is used religiously for data transferred between networks. Sensitive information like user's credentials are constantly being sent from the browser to the server when logging into websites for personalised content. The same is true for for even more high risk information like banking details, scans of identification documents and even keys. Websites that wish to be secure are now using HTTPS instead of HTTP. The Number of websites using HTTPS is constantly increasing see figure \ref{fig:httpsRise}
 
@@ -136,7 +146,11 @@ This project will be compatible with NodeJs because it is one of the fastest gro
 %
 %
 
-
+%
+%
+% Notes Start
+%
+%
 Position your topic within Computer Science. This activity will aid you in your literature review also. We zoom out to see three levels:
 
 % notice the enumerate structure to create itemized lists
@@ -162,7 +176,17 @@ You can specify the width and label for a figure which allows you to reference t
 %Project specifics: Background minimum knowledge.
 
 %Imagine you wanted to explain the specifics of your project to a person that knows nothing of Computer Science. You cannot talk about everything (as the idea is not to write a 500+ page report). Remember the reader at this stage can only be assumed to know what you have covered, so identify what are the minimum concepts belonging to the main areas (listed as 3 in the section before) and the core areas (listed as 2 in the section before) that you would need to explain so that the reader is able to understand the specifics of your project and indeed the following section. For example the minimum amount of knowledge about software development, cloud computing, mobile applications, social networking and service providers that are required so as to understand the specifics of a project about a mobile app for an on-line voting system. Here we are making the same trip we did before, but now in the opposite direction. Start zooming in from 3, then to 2 and finally to reach your project 1. Once the reader is finished this section they should be able to understand the proceeding sections (and have context for it within the project).
+%
+%
+% Notes End
+%
+%
 
+%
+%
+% Notes 2.2 Start
+%
+%
 \section{A Review of -INSERT THEMATIC AREA-}
 The focus of this section is at the heart of the project research phase. You must identify the main sources of information you should be aware of within your chosen area and pay regular attention to so as to strengthen your knowledge in the core topic you are working at. So here you should develop an knowledge of not only your core topic but also about the area of computer science the topic falls under. More specifically you should research the following:
 \begin{itemize}
@@ -202,4 +226,85 @@ What has been done before in your community w.r.t. your topic? Once you have got
 
 The aim here is that you find the trends in your topic (3), and more in general in the area in which your topic resides (2) your project falls under and from these trends you develop your initial project question further and begin to get insights into how others have solved/approached similar problems. Think of this section as colouring in your initial idea. Before you approach this section you should read at least 4/5 good literature reviews (a selection of last years projects will be posted on blackboard to aid you but you should find other sources also).
 
-In particular in this section, you must find and analyze at least 5 (ideally around 10) works belonging to, or at least related to, your work. You must describe these works and position your project w.r.t. them (i.e., clearly identify the similarities and differences between your project and each of these works). Also remember if you find that you are detailing topics that you have not introduced already here you need to add something to the earlier Scope section.
+In particular in this section, you must find and analyse at least 5 (ideally around 10) works belonging to, or at least related to, your work. You must describe these works and position your project w.r.t. them (i.e., clearly identify the similarities and differences between your project and each of these works). Also remember if you find that you are detailing topics that you have not introduced already here you need to add something to the earlier Scope section.
+%
+%
+% Notes 2.2 End
+%
+%
+
+%
+%
+% Research papers
+%
+%
+To achieve my goal of dynamically encrypting messages between both parties, each party must know the encryption key without explicitly sending that key to each other. For this to have a dynamic effect multiple processes will in this case synchronise which each other and a separate process will take care of swapping keys.
+
+The research papers that will be cited synchronise once therefore I will just have to take what I learned and apply it to multiple instances.
+
+Two identical neural networks that originally have a random generated state. This state is different between the two networks and to achieve synchronisation this state must be the same, this is because when the state is the same it will be essentially the key used to encrypt messages. And all this will be achieved without ever sending the key over the network even in an encrypted form as in public private encryption techniques. 
+
+A tree parity machine is a common method used across all papers in order to achieve this goal figure \ref{fig:treeParityMachine} visualises such a machine.
+
+\begin{figure}[ht]
+  \centering
+      \includegraphics[width=0.7\textwidth]{treeParityMachine.png}
+  \caption[Tree parity machine]{Tree parity machine with L=[-4,4], K=3 and N=4\cite{Private_Inputs_to_Tree_Parity_Machine}}
+  \label{fig:treeParityMachine}
+\end{figure}
+
+According to \cite{Genetic_Key_Guided_Neural_Deep_Learning_based_Encryption} both parties should have the same layout of the tree parity machine where N is the number of neutrons used as input for each hidden neutron. The input neutrons have the X and are at the bottom of the diagram, in this case there are four input neutrons for each hidden neutron. The hidden neutrons are referenced as K, these are the neutrons in the middle with the W in the diagram. These are the weights which are updated if the output of both of the tree parity machines are the same. These weights in the end will be the key used for symmetric encryption between the two parties. T will be the output value which will be compared to the other tree parity machine. 
+
+There is a low number of machine learning algorithms that can be used to synchronise and the paper \cite{Genetic_Key_Guided_Neural_Deep_Learning_based_Encryption} as well as the majority of papers use the hebbian-learning rule figure \ref{fig:hebianFormula}
+
+\begin{figure}[ht]
+  \centering
+      \includegraphics[width=0.7\textwidth]{hebbian_learning.png}
+  \caption[Hebbian learning rule]{Hebbian learning rule\cite{Genetic_Key_Guided_Neural_Deep_Learning_based_Encryption}}
+  \label{fig:hebianFormula}
+\end{figure}
+
+The other two learning rules that can easily be substituted according to this paper \cite{DESIGN_OF_AN_EFFICIENT_NEURAL_KEY_GENERATION} are as follows anti-hebbian learning rule figure \ref{fig:antihebbianlearning} and random-walk rule figure \ref{fig:randomwalklearning}.
+
+\begin{figure}[ht]
+  \centering
+      \includegraphics[width=0.7\textwidth]{anti-hebbian.png}
+  \caption[Anti-Hebbian learning rule formula]{Anti-Hebbian learning rule formula\cite{DESIGN_OF_AN_EFFICIENT_NEURAL_KEY_GENERATION}}
+  \label{fig:antihebbianlearning}
+\end{figure}
+
+\begin{figure}[ht]
+  \centering
+      \includegraphics[width=0.7\textwidth]{random-walk.png}
+  \caption[Random-Walk learning rule formula]{Random-Walk learning rule formula\cite{DESIGN_OF_AN_EFFICIENT_NEURAL_KEY_GENERATION}}
+  \label{fig:randomwalklearning}
+\end{figure}
+
+There are a number of steps involved in synchronising the tree parity machines.
+Step 1. The weights at the beginning should be randomly initialised using local randomisation techniques because there is a chance that downloading data from random APIs can be spoofed which will result in the attacker easily synchronising with your tree parity machine. 
+
+Step 2. Generate random input which will be used by both of the tree parity machines. This input can be generated by a third party server or one of the two parties.
+
+Step 3. Calculate the value of the weights based on the random input using the formula in figure \ref{fig:hiddenNeutronFormula}
+
+\begin{figure}[ht]
+  \centering
+      \includegraphics[width=0.7\textwidth]{hidden_neutron_folmula.png}
+  \caption[Hidden neutron formula]{Hidden neutron formula\cite{Genetic_Key_Guided_Neural_Deep_Learning_based_Encryption}}
+  \label{fig:hiddenNeutronFormula}
+\end{figure}
+
+Step 4. Calculate the output neutron based on the weights using the formula in figure \ref{fig:outputNeutronFormula}
+
+\begin{figure}[ht]
+  \centering
+      \includegraphics[width=0.7\textwidth]{outputNeutronFormula.png}
+  \caption[Output Neutron Formula]{Output Neutron Formula\cite{Genetic_Key_Guided_Neural_Deep_Learning_based_Encryption}}
+  \label{fig:outputNeutronFormula}
+\end{figure}
+
+Step 5. exchange the output between both of the tree parity machines through a network and if the outputs are not the same repeat again from step 2. And if the outputs are the same apply the hebbian learning rule to the weights and update them accordingly. Repeat step 3 to step 5 until both of the tree parity machines have the same weights.
+
+This technique can be considered too simplistic and the attacker has a greater probability in synchronising with the two parties. I will cover attacks related to tree parity machines further in the section.
+
+To increase the speed of synchronisation and lower the chance of the attacker being able to synchronise with the parties. A technique called queries is used.
