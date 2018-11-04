@@ -372,3 +372,28 @@ In order for this attack to be likely successful the number of tree parity machi
   \caption[Tree Parity Machines needed for synaptic depth]{Tree Parity Machines needed for synaptic depth\cite{BIG_ResearchPaper}}
   \label{fig:geneticEMachine}
 \end{figure}
+
+The most successful attack for the simple tree parity machine is the majority attack \cite{BIG_ResearchPaper}. The genetic attack works better than the majority attack if the synaptic depth is not large. The majority attack uses multiple tree parity machines just like the genetic attack however there is no selection of the fittest tree parity machines. This way the number of tree parity machines is constant. This attack uses the Bayes learning rule \cite{Bayes_rule} to find the overlap between the hidden units of one of the parties network and the attackers network.
+It is possible to use the following formula in figure \ref{fig:majority0} to calculate the probability of synchronisation. 
+\begin{figure}[ht]
+  \centering
+      \includegraphics[width=0.5\textwidth]{majorityAttack0.png}
+  \caption[probability of E being successful]{probability of E being successful\cite{BIG_ResearchPaper}}
+  \label{fig:majority0}
+\end{figure}
+At the beginning of the attack the probability of the attacker being successful is 0 and when the attack is successful the probability is 1.
+The average overlap between two of the attackers networks can be calculated using the following formula figure \ref{fig:majority1}.
+\begin{figure}[ht]
+  \centering
+      \includegraphics[width=0.7\textwidth]{majorityAttack1.png}
+  \caption[probability of overlap]{probability of overlap\cite{BIG_ResearchPaper}}
+  \label{fig:majority1}
+\end{figure}
+If the result of this formula is 1 then the two of the attackers networks tested are identical which can reduce the majority attack to the geometric method.
+If trying to attack a tree parity machine with 3 hidden neutrons, 1000 input neutrons and a synaptic depth of 5 it is possible to successfully synchronise at around 1000 steps. this is done with only 100 attacking networks. Figure \ref{fig:majority1} demonstrates the this attack over 1000 steps.
+\begin{figure}[ht]
+  \centering
+      \includegraphics[width=0.8\textwidth]{majorityAttack2.png}
+  \caption[Majority attack results]{Majority attack results\cite{BIG_ResearchPaper}}
+  \label{fig:majority2}
+\end{figure}
