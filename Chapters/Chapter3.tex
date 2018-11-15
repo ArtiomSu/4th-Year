@@ -12,27 +12,25 @@
 %\frac{d}{dt}(\frac{\partial L}{\partial \dot{c_i}})-\frac{\partial L}{\partial %c_i}+\frac{\partial P}{\partial \dot{c_i}} = F_i,
 %\label{eq:Legrange}
 %\end{equation}
+The problem this project is designed to solve is increase the level of security when transferring data between hosts. Traditionally when transferring data between two hosts an encryption key for that session is generated and normally used until the session ends. In some cases the same key is used for future communications. This can cause issues and potential data theft if the attacker manages to capture the session and get access to the key by any means necessary, it would be possible to decrypt the session and potentially reveal important/private information.
 
+The information revealed can potentially cause data breaches. In 2018 alone major data breaches have occurred leaking millions of private user data including Facebook where 87 million users were compromised \cite{Data_breach_facebook}. The largest data breach this year affected 1.1 billion registered Indian citizens. The company that was compromised is Aadhaar \cite{Data_breach_Aadhaar} causing personal addresses, phone numbers, emails and names to be available to anyone willing to part with a few hundred rupees.
+
+This project will mitigate this potential problem by periodically changing the encryption key throughout the duration of the session with both parties being aware of the current key in use while the attacker will not know the key. By using this method if the attacker manages to get the encryption key only a small portion of the session could be decrypted. The random keys generated for encryption will be isolated from each other therefore if the attacker has one key it will not be possible to perform mathematical operations on the key to calculate the next keys used for encryption. 
 
 \section{Objectives}
 %Enumerate the objectives you want to achieve in your project. Again as this is an early stage these will tend to change but there should be a rational explanation for this change. Always document your work, keep a lab book during the term that you only use for FYP!
-The objectives of this project focus on providing a sort of an API that dynamically synchronises with other remote hosts and shares encryption keys with other servers running on the same machine. In order to provide dynamically encrypt information.
+The objectives of this project focus on providing a sort of an API that allows to dynamically synchronises with other remote hosts and shares encryption keys with other servers running on the same machine, in order to provide dynamically encrypted information.
 
 Objectives are identified in a way that makes then achievable under the time constraint.
 
 \begin{enumerate}
-
 	\item Provide an API that can be configured only by servers running only on the same machine.
 	\item Provide a number of tree parity machines that will synchronise with remote tree parity machines these will be configured through the API and will be able to access machines outside of localhost.
 	\item Provide methods of identification for threads, hosts and threads for the different hosts.
 	\item Provide methods for allowing multiple hosts to access the API.
-	\item Evaluate performance and maybe use and test different learning algorithms
-	\item 
-	
-	
-	
-	
-
+	\item Evaluate performance and maybe use and test different learning algorithms.
+	\item Create an easy to use NodeJs module for easy implementation with NodeJs Apps.
 \end{enumerate}
 
 \section{Functional Requirements}
@@ -61,13 +59,9 @@ Objectives are identified in a way that makes then achievable under the time con
 	\item API sends one key to another server running on localhost and only servers running on localhost after synchronisation between one or more threads occurred.
 	\item After key is extracted from thread the localhost thread and corresponding remote thread will desynchronise and begin to synchronise again.
 	\item API will be notified when a host disconnects and connects to clean up accordingly.
-	\item sensitive information in ram should be protected/encrypted
+	\item sensitive information in ram should be protected/encrypted.
 	\item sensitive information will not be saved in logs or cache.
 	
-	
-	
-	
-
 \end{enumerate}
 
 
