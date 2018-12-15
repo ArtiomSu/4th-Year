@@ -20,7 +20,7 @@
 \frontmatter      % Begin Roman style (i, ii, iii, iv...) page numbering
 
 % Set up the Title Page
-\title  {Your Thesis Title}
+\title  {DynamiCrypt}
 \authors  {Artiom Sumigora}
             
 \addresses  {\groupname\\\deptname\\\univname}  % Do not change this here, instead these must be set in the "Thesis.cls" file, please look through it instead
@@ -79,7 +79,11 @@ Date:\\
 \abstract{
 \addtocontents{toc}{\vspace{1em}}  % Add a gap in the Contents, for aesthetics
 
-The Thesis Abstract is written here (and kept just one page long or less). The page is kept centered vertically so can expand into the blank space above the title too\ldots Briefly, write in 3-4 paragraphs on what your project is about. This is a more precise version of your project abstract submitted on week 1 updated with developments between then and the submission time. Try to include the main features and functional requirements provided. As the title suggests this section is normally the only thing an executive would read so it MUST get across the main elements of the project.
+In today's world information is mostly sent in an encrypted form over the public internet. Traditionally when a client connects to a server the public keys are shared and the same set of public/private key pairs are used for the session and potentially for future sessions, depending on how the system is setup. Provided that industry standard encryption is used it would take the attacker longer than the lifetime of the earth to crack the key making the system secure. The problem arises if the attacker managed to get the key in some other fashion other than brute force and got access to the server it would be possible to locate this key and use it to decrypt potentially sensitive information that was captured over the network.
+
+The problem this project proposes to address is that scenario. This will be addressed by using multiple encryption keys throughout the session. These encryption keys will be generated using a tree parity machine. A tree parity machine consists of input neurons, hidden neurons and one output neuron. A neural network is chosen for this because the weights of neural networks can be synchronised between each tree parity machine on different hosts. The weights can then be used to generate a key and since the weights on both tree parity machines are identical the same key will be generated. The weight are synchronised over the network with no information sent about the weights itself therefore the attacker will not be able to figure out the key. The server can then use multiple tree parity machines to synchronise with the same number of tree parity machines on a different server and thus multiple keys will be generated and different keys can be used through a session.
+
+This thesis will provide a program that is capable of handling synchronisation between multiple tree parity machines between two hosts. An API will be provided that will access the said program and allow other server to use dynamic encryption. A NodeJS module will also be provided to make integration with NodeJS applications very easy.
 
 }
 
@@ -91,8 +95,10 @@ The Thesis Abstract is written here (and kept just one page long or less). The p
 % The Acknowledgements page, for thanking everyone
 \acknowledgements{
 \addtocontents{toc}{\vspace{1em}}  % Add a gap in the Contents, for aesthetics
+This project has taken a substantial amount of work, dedication and research. I would
+like to say special thanks to:
 
-The acknowledgements and the people to thank go here, don't forget to include your project supervisor (term one and two)\ldots
+John Creagh, project supervisor in semester one.
 
 }
 \clearpage  % End of the Acknowledgements
