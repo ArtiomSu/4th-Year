@@ -1,31 +1,38 @@
 \chapter{Conclusions and Future Work}
 \label{chap:conclusions}
 \lhead{\emph{Conclusions}}
-This chapter should comprise 2-3 pages and enumerate conclusions of this phase of work. In your final report Discussions and Conclusions will form separate chapters and be significantly longer and more detailed.
+%This chapter should comprise 2-3 pages and enumerate conclusions of this phase of work. In your final report Discussions and Conclusions will form separate chapters and be significantly longer and more detailed.
 
 \section{Discussion}
-A reflective discussion of some of the problems you encountered during this phase of the project and how that may influence how you proceed with the next phase.
+%A reflective discussion of some of the problems you encountered during this phase of the project and how that may influence how you proceed with the next phase.
+This project uses a number of different libraries for different tasks. One of the most important tasks is getting the REST API to function properly. Initially I wanted to use the Cpprestsdk library as it was the most popular as well as being actively developed by Microsoft. This did not come to fruition due to the sample examples not compiling on my system after installing and linking the library during compiling. In order to solve this problem I began looking for alternative REST frameworks and stumbled upon Pistache which turned out to be more responsive than Cpprestsdk and even native PHP. This means that each request is processed in less time and more requests can be processed per second, which will reduce the time needed to synchronise the tree parity machines. Due to Pistache claiming to be written in pure C++11 with no external dependencies I was able to successfully compile the examples provided on their GitHub. 
+
+Another problem that surfaced was due to my lack of knowledge about advanced C++ concepts while writing the prototype. I needed to use a generic data type, specifically the DynamicArray class needed to contain a generic variable and it needed a template function. I refreshed my knowledge on templates by watching a small number of tutorials such as this \cite{CppTotorial}. However I still had issues with linking during compilation. While trying to fix the issue I discovered \cite{cppHeaderCrap} that it is best to put function templates only in header files separating templates into header and definitions causes issues therefore The whole DynamicArray class now resides in a header file and has no corresponding .cpp file. I will have to reinforce my knowledge in other aspects of C++ as different challenges will arise throughout the project later on.
 
 \section{Conclusion}
-Enumerate the main conclusions you have got in terms of background, problem description and the solution approach you have come up with.
+%Enumerate the main conclusions you have got in terms of background, problem description and the solution approach you have come up with.
+
+
 
 \section{Future Work}
-Enumerate all the things you would have wanted to do should you have more time to work on this report.
+%Enumerate all the things you would have wanted to do should you have more time to work on this report.
+Given the limited time available for actual code in semester one due to research among other things being the focus, the prototype ended up being very basic. There was no time to do anything worth showing using Pistache the REST framework. Ideally a simple server could have been setup with the desired routes and basic functionality that allows data to be bounced between two instances of the server. This could mimic the queries sent back and forward between the tree parity machines, since those queries are going to be sent using TCP or more specifically HTTPS this would give me a good start for next semester as it would be easy to replace meaningless data with query data.
+The prototype uses random data for Tree Parity Machine input as it was quicker and easier to implement however ideally queries should have been used for security purposes and will definitely make an appearance in the final solution.
 
-Additional resources on the use of latex is below.
+%Additional resources on the use of latex is below.
 
-Tutorials:
-\begin{itemize}
-    \item \url{https://www.latex-tutorial.com/tutorials/beginners/how-to-use-latex}
-    \item \url{https://en.wikibooks.org/wiki/LaTeX}
-    \item \url{https://www.sharelatex.com/learn/Main_Page}
-    \item \url{http://www.math.harvard.edu/texman}
-    \item \url{https://web.stevens.edu/hfslwiki/images/a/a0/ShareLatex_Tutorial.pdf}
-\end{itemize}
+%Tutorials:
+%\begin{itemize}
+%    \item \url{https://www.latex-tutorial.com/tutorials/beginners/how-to-use-latex}
+%    \item \url{https://en.wikibooks.org/wiki/LaTeX}
+%    \item \url{https://www.sharelatex.com/learn/Main_Page}
+%    \item \url{http://www.math.harvard.edu/texman}
+%    \item \url{https://web.stevens.edu/hfslwiki/images/a/a0/ShareLatex_Tutorial.pdf}
+%\end{itemize}
 
-Presentations:
-\begin{itemize}
-    \item \url{http://www.iu.hio.no/~frodes/rm/ppt/latex.ppt}
-    \item \url{https://classes.soe.ucsc.edu/ams200/Fall09/Latex_intro.ppt}
-    \item \url{http://www.menet.umn.edu/~blake/latexcourse/courseslides.ppt}
-\end{itemize}
+%Presentations:
+%\begin{itemize}
+%    \item \url{http://www.iu.hio.no/~frodes/rm/ppt/latex.ppt}
+%    \item \url{https://classes.soe.ucsc.edu/ams200/Fall09/Latex_intro.ppt}
+%    \item \url{http://www.menet.umn.edu/~blake/latexcourse/courseslides.ppt}
+%\end{itemize}

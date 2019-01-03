@@ -110,10 +110,10 @@
 \usepackage{placeins}
 \usepackage{listings}
 
-\definecolor{mGreen}{rgb}{0,0.6,0}
-\definecolor{mGray}{rgb}{0.5,0.5,0.5}
-\definecolor{mPurple}{rgb}{0.58,0,0.82}
-\definecolor{backgroundColour}{rgb}{0.95,0.95,0.92}
+%\definecolor{mGreen}{rgb}{0,0.6,0}
+%\definecolor{mGray}{rgb}{0.5,0.5,0.5}
+%\definecolor{mPurple}{rgb}{0.58,0,0.82}
+%\definecolor{backgroundColour}{rgb}{0.95,0.95,0.92}
 
 \lstdefinestyle{CStyle}{
     backgroundcolor=\color{backgroundColour},   
@@ -221,8 +221,8 @@
       \smallskip
       {\LARGE \authornames \par}
       \vfill
-      {\large This thesis has been submitted in partial fulfillment for the \par}
-      {\large degree of Bachelor of Science in YOUR DEGREE \par}
+      {\large This thesis has been submitted in partial fulfilment for the \par}
+      {\large degree of Bachelor of Science in Software Development \par}
       \bigskip
       \bigskip
       {\large in the \par}
