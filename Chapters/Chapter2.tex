@@ -19,6 +19,7 @@ The Core topic of this project is safely and dynamically encrypting messages bet
 
 The core areas under which my project falls under is cryptography, security for encrypting and securing information. Machine learning will be used for establishing methods of secure information exchange. And finally networking due to the setup required of communicating between different servers and sending encrypted information.
 
+This project will be compatible with NodeJs because it is one of the fastest growing server platform \cite{NodeJs} that can be easily set up and supports a large amount of modules.
 
 Encryption \cite{encryptionDefinition} is when the plaintext of any form of data that can be easily read is converted to an unreadable encoded version. In order to retrieve the original data for viewing or processing it must be decoded using a specific algorithm and more than likely some sort of key, usually a lengthy password. Encryption may be used for encrypting files and operating systems on a user's hard drive. In today's world encryption is used religiously for data transferred between networks. Sensitive information like user's credentials are constantly being sent from the browser to the server when logging into websites for personalised content. The same is true for for even more high risk information like banking details, scans of identification documents and even keys. Websites that wish to be secure are now using HTTPS instead of HTTP. The Number of websites using HTTPS is constantly increasing see figure \ref{fig:httpsRise}
 
@@ -110,36 +111,22 @@ Synchronisation is common in multi-threaded software where any number of threads
 Data Synchronisation \cite{datasync} is an on going process of having the same data present on selected servers. Large databases that operate on multiple servers usually use data versioning to keep check on the latest data. MongoDB is one such database \cite{mongo} this is the reason for a delay when you upload a YouTube video (YouTube doesn't use MongoDB this is just an example) it might not be instantly available for other users to watch as it needs to propagate through a number of servers hosting the databases.
 Popular websites use data synchronisation for mirroring websites. This allows users to be distributed among relatively identical servers in order to avoid bandwidth bottlenecks as well as increasing availability just in case one server dies users will be redirected to a different mirror seamlessly without interruptions. 
 File synchronisation is the method of choice for home backups this is preferable over the traditional backup methods where data is simply dumped onto another hard drive. This process prevents copying identical files which leads to faster transfers and a less chance of errors occurring. My personal favourite file synchronisation tool is Unison \cite{unison}. It is also possible to synchronise folders over the network between two home computes, Unison does this through SSH.
-Blockchain \cite{blockChain} the method used for secure crypto ledgers which also relies on synchronisation between peers. Synchronisation for the ethereum crypto currency blockchain can be expressed as follows. "Synchronisation proceeds from head to known block by requesting and fetching block hashes iteratively from young to old (head to root). Based on block hashes, blocks can be requested. Based on the parenthash of a block, independent sections can be linked and a chain established. By checking if a block is found in the block chain the root of the blockpool can be established and the chain can be inserted in the blockchain."
+Blockchain \cite{blockChain} the method used for secure crypto ledgers which also relies on synchronisation between peers. Synchronisation for the ethereum crypto currency blockchain can be expressed as follows. Synchronisation proceeds from head to known block by requesting and fetching block hashes iteratively from head to root. Based on block hashes, blocks can be requested. Based on the parenthash of a block, independent sections can be linked and a chain established. By checking if a block is found in the block chain the root of the blockpool can be established and the chain can be inserted in the blockchain \cite{blockChain}.
 %#######################################################
 %                                                   
 % check if its ok to just dump stuff from the web.
 %
 %#######################################################
-
 %
 %
 % End of sync
 %
 %
-
-
-
-
-
-
 %
 %
 % Stick these somehwere maybe 
 %
 %
-Machine learning has been known to be used for secure communications although it is not clear if it is used in servers with valuable data. Google's AI successfully created secure algorithms \cite{GoogleAi1} that use inhuman cryptographic schemes making them harder to crack. This technique is called GAN Cryptography \cite{GoogleAi2} for which a research paper can be found.
-
-Currently dynamic encryption is exercised in voip phone calls by a company known as Dencrypt \cite{dencrypt} according to the explanation of their proprietary algorithm they use a wrapper on top of AES-256 which is a chosen algorithm that is discarded when the data transfer is finished.
-
-
-This project will be compatible with NodeJs because it is one of the fastest growing server platform \cite{NodeJs} that can be easily set up and supports a large amount of modules.
-
 %
 %
 % Stick these somehwere maybe ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -238,6 +225,7 @@ This project will be compatible with NodeJs because it is one of the fastest gro
 % Research papers
 %
 %
+\section{Review of the thematic area}
 To achieve my goal of dynamically encrypting messages between both parties, each party must know the encryption key without explicitly sending that key to each other. For this to have a dynamic effect multiple processes will in this case synchronise which each other and a separate process will take care of swapping keys.
 
 The research papers that will be cited synchronise once therefore I will just have to take what I learned and apply it to multiple instances.
@@ -409,7 +397,7 @@ If trying to attack a tree parity machine with 3 hidden neutrons, 1000 input neu
 %
 %
 My project falls mostly under cryptography and secure transfer of information therefore the companies that could be potentially interested would need to be involved in that market. 
-Google is known for the many cloud services it provides like gmail, docs and drive. The data needs to be encrypted before sending it to the user to display. When using the products Google claims to use several layers of encryption to protect customer data \cite{googleSecurity}. Google has its own cryptographic library called Tink \cite{googleTink}, ensuring that they have an interest for cryptography development. Google also takes part in less conventional methods of cryptography like using their own neural network to come up with obscure encryption methods \cite{GoogleAi1}. The encryption methods my project uses integrate a machine learning algorithm which could peak the interest of Google.
+Google is known for the many cloud services it provides like gmail, docs and drive. The data needs to be encrypted before sending it to the user to display. When using the products Google claims to use several layers of encryption to protect customer data \cite{googleSecurity}. Google has its own cryptographic library called Tink \cite{googleTink}, ensuring that they have an interest for cryptography development. Google also takes part in less conventional methods of cryptography like using their own neural network to come up with obscure encryption methods \cite{GoogleAi1}. Google's AI successfully created secure algorithms \cite{GoogleAi1} that use inhuman cryptographic schemes making them harder to crack. This technique is called GAN Cryptography \cite{GoogleAi2} for which a research paper can be found. The encryption methods my project uses integrate a machine learning algorithm which could peak the interest of Google.
 
 Dencrypt \cite{dencrypt} is a company that uses dynamic encryption for voice over IP communication. They use a wrapper around AES-256 to achieve the dynamic nature. They claim dynamic encryption is the state of the art in cryptology and I believe they would be interested in different methods of achieving dynamic encryption. Dencrypt explains that even if someone manages to decrypt a single data transaction the next transaction would not reveal information as it is encrypted in a different way, This is exactly what I'm aiming to achieve with my project just using different methods. 
 
