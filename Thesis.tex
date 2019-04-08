@@ -5,6 +5,9 @@
 % Set up the document
 \documentclass[a4paper, 11pt, oneside]{Thesis}  % Use the "Thesis" style, based on the ECS Thesis style by Steve Gunn
 
+\newcommand{\setimp}{\newif \ifimp \imptrue}
+\setimp
+
 % Include any extra LaTeX packages required
 \usepackage[square, numbers, comma, sort&compress]{natbib}  % Use the "Natbib" style for the references in the Bibliography
 \usepackage[nottoc]{tocbibind} % bind bibliography to the table of contents
@@ -98,7 +101,10 @@ This thesis will provide a program that is capable of handling synchronisation b
 This project has taken a substantial amount of work, dedication and research. I would
 like to say special thanks to:
 
+My friends and family for supporting me.
+
 Dr. John Creagh, project supervisor in semester one.
+Seamus Lankford, project supervisor in semester two.
 
 }
 \clearpage  % End of the Acknowledgements
@@ -170,7 +176,14 @@ Dr. John Creagh, project supervisor in semester one.
 
 \input{Chapters/Chapter4} % Solution Approach
 
+\ifimp
 \input{Chapters/Chapter5} % Conclusions and Term 2 work
+\input{Chapters/Chapter6} % Conclusions and Term 2 work
+\input{Chapters/Chapter7} % Conclusions and Term 2 work
+\else
+\input{Chapters/Chapter5_Rsh} % Conclusions and Term 2 work
+\fi
+
 
 %% ----------------------------------------------------------------
 \label{Bibliography}
