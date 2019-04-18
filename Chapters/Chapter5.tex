@@ -69,7 +69,8 @@ The API doesn't have many routes to use therefore it would not be difficult to u
 
 \textbf{Hard Difficulty}
 \begin{enumerate}
-\item The buffers that messed up multiple tpms per peer.
+\item A major difficulty that has prevented the implementation of a non functional requirement was the ability to use multiple tree parity machines per peer. Originally the plan was to implement multiple tree parity machines per peer, however in practice after spending more than a week on the problem a decision was made to move on and only allow one tree parity machine per peer. This theoretically does not have any impact on performance and certainly has no impact on security. A single tree parity machine per communication works as expected, a peer can have multiple tree parity machines where for example peer1 communicates with peer2 and peer3 at the same time. In this scenario peer1 would have two tree parity machines as the peer will communicate with two other peers. This scenario works flawlessly in the final implementation of the project. If the original plan were to be implemented peer1 would have twenty tree parity machines, ten per peer it communicates to. The reason why this is difficult is because the ten tree parity machines are reading and writing to the same socket. Whereas with one tree parity machine it has exclusive read and write access to the socket. An attempt was made to implement multiple read and write buffers, a queue, custom read and write objects however a decision was made to abandon this feature for now as it took up too much time and didn't add anything beneficial to the project apart from "being cool". 
+The architecture of the project can be said to have changed although it is insignificant as the number of tree parity machines is rather virtual in nature. This issue did not represent any major risk to the project as everything works perfectly with one tree parity machine per connection. The implementation schedule was affected as a lot of time was spent on a feature that did not get implemented and it is better to spend time on features that actually do get implemented.
 \end{enumerate}
 
 
@@ -78,3 +79,51 @@ The API doesn't have many routes to use therefore it would not be difficult to u
 In December of last year, when writing the first version of the report, in Chapter 4 you came up with your original solution approach. On it, you presented (i) the architecture of your solution, (ii) your list of use cases, (iii) a risk assessment, (iv) a methodology to develop your solution approach, (v) your implementation schedule, (vi) your evaluation plan and (vii) some prototype of the resulting product. From January to April you have been developing your solution approach. Along the way you have encountered difficulties (the ones listed in Section 5.1) which might have modified your original plan so that you can come up with an actual developed project.
 
 This section is effectively the production of "as built" specification where you compare your original design to the final finished project. Please go section by section (the ones listed from (i) to (vii) in the last paragraph. For each section, enumerate any difference between the original design and the final project, and justify the difficulty forcing you to make such this change. Do not fret if some of these changes are radical, what is important here is that there is a clear rationale for changes made.
+
+\begin{figure}[!h]
+  \centering
+      \includegraphics[width=1\textwidth]{Figures/basic-2hosts-final.png}
+  \caption[High level overview of architecture]{High level overview of architecture}
+  \label{fig:basic-two-hosts-final}
+\end{figure}
+\FloatBarrier
+
+\begin{figure}[!h]
+  \centering
+      \includegraphics[width=1\textwidth]{Figures/class-diagram-all-croped.png}
+  \caption[DynamiCrypt Class Diagram]{DynamiCrypt Class Diagram}
+  \label{fig:class-diagram-all}
+\end{figure}
+\FloatBarrier
+
+\begin{figure}[!h]
+  \centering
+      \includegraphics[width=1\textwidth]{Figures/API_class_Diagram-croped.png}
+  \caption[DynamiCrypt API Class Diagram]{DynamiCrypt API Class Diagram}
+  \label{fig:API_class_Diagram}
+\end{figure}
+\FloatBarrier
+
+\begin{figure}[!h]
+  \centering
+      \includegraphics[width=1\textwidth]{Figures/class_diagram_dynamicrypt-part1.png}
+  \caption[DynamiCrypt Class Diagram part 1]{DynamiCrypt Class Diagram part 1}
+  \label{fig:class_diagram_dynamicrypt-part1}
+\end{figure}
+\FloatBarrier
+
+\begin{figure}[!h]
+  \centering
+      \includegraphics[width=1\textwidth]{Figures/class_diagram_dynamicrypt-part2-croped.png}
+  \caption[DynamiCrypt Class Diagram part 2]{DynamiCrypt Class Diagram part 2}
+  \label{fig:class_diagram_dynamicrypt-part2}
+\end{figure}
+\FloatBarrier
+
+\begin{figure}[!h]
+  \centering
+      \includegraphics[width=1\textwidth]{Figures/nodeJsApp.png}
+  \caption[NodeJs App architecture]{NodeJs App architecture}
+  \label{fig:nodeJsApp_architecture}
+\end{figure}
+\FloatBarrier
