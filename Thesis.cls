@@ -115,9 +115,50 @@
 %\definecolor{mPurple}{rgb}{0.58,0,0.82}
 %\definecolor{backgroundColour}{rgb}{0.95,0.95,0.92}
 
-\lstdefinestyle{CStyle}{
-    backgroundcolor=\color{backgroundColour},   
-    commentstyle=\color{mGreen},
+%\lstdefinestyle{CStyle}{
+%    backgroundcolor=\color{backgroundColour},   
+%    commentstyle=\color{mGreen},
+%    keywordstyle=\color{magenta},
+%    numberstyle=\tiny\color{mGray},
+%    stringstyle=\color{mPurple},
+%    basicstyle=\footnotesize,
+%    breakatwhitespace=false,         
+%    breaklines=true,                 
+%    captionpos=b,                    
+%    keepspaces=true,                 
+%    numbers=left,                    
+%    numbersep=5pt,                  
+%    showspaces=false,                
+%    showstringspaces=false,
+%    showtabs=false,                  
+%    tabsize=2,
+%    language=C
+%}
+\usepackage{epstopdf}
+\usepackage[scriptsize]{subfigure}
+\usepackage{booktabs}
+\usepackage{rotating}
+\usepackage{listings}
+\usepackage{lstpatch}
+%\lstset{captionpos=b,
+%        frame=tb,
+%        basicstyle=\scriptsize\ttfamily,
+%        showstringspaces=false,
+%        keepspaces=true}
+%\lstdefinestyle{matlab} {
+%        language=Matlab,
+%        keywordstyle=\color{black},
+%        commentstyle=\color[rgb]{0,0,0}\em,
+%        stringstyle=\color[rgb]{0,0,0} }
+%\usepackage[pdfpagemode={UseOutlines},bookmarks=true,bookmarksopen=true,
+%   bookmarksopenlevel=0,bookmarksnumbered=true,hypertexnames=false,
+%   colorlinks,linkcolor={black},citecolor={blue},urlcolor={blue},
+%   pdfstartview={FitV},unicode,breaklinks=true]{hyperref}
+\usepackage{xcolor}
+\lstset { %
+    language=C++,
+    backgroundcolor=\color{white!5}, % set backgroundcolor
+    basicstyle=\footnotesize,% basic font setting
     keywordstyle=\color{magenta},
     numberstyle=\tiny\color{mGray},
     stringstyle=\color{mPurple},
@@ -125,35 +166,13 @@
     breakatwhitespace=false,         
     breaklines=true,                 
     captionpos=b,                    
-    keepspaces=true,                 
-    numbers=left,                    
+    keepspaces=true,                    
     numbersep=5pt,                  
     showspaces=false,                
     showstringspaces=false,
     showtabs=false,                  
-    tabsize=2,
-    language=C
+    tabsize=2
 }
-\usepackage{epstopdf}
-\usepackage[scriptsize]{subfigure}
-\usepackage{booktabs}
-\usepackage{rotating}
-\usepackage{listings}
-\usepackage{lstpatch}
-\lstset{captionpos=b,
-        frame=tb,
-        basicstyle=\scriptsize\ttfamily,
-        showstringspaces=false,
-        keepspaces=true}
-\lstdefinestyle{matlab} {
-        language=Matlab,
-        keywordstyle=\color{black},
-        commentstyle=\color[rgb]{0,0,0}\em,
-        stringstyle=\color[rgb]{0,0,0} }
-\usepackage[pdfpagemode={UseOutlines},bookmarks=true,bookmarksopen=true,
-   bookmarksopenlevel=0,bookmarksnumbered=true,hypertexnames=false,
-   colorlinks,linkcolor={black},citecolor={blue},urlcolor={blue},
-   pdfstartview={FitV},unicode,breaklinks=true]{hyperref}
 \pdfstringdefDisableCommands{
    \let\\\space
 }
