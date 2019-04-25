@@ -216,3 +216,64 @@ The evaluation remains relative the same although there will be more focus on ev
 
 \textbf{Prototype}
 In the initial stage of the project a prototype was created to demonstrate synchronisation between two tree parity machines in a very basic manner. Some of the code used for the prototype still exists in the current version of DynamiCrypt as I am still using the simple tree parity machine synchronisation method. For the next version of DynamiCrypt the synchronisation will use a slightly different formula therefore most of the code used for the prototype will be gone will be different. 
+
+Bellow are screen shots of the DynamiCrypt system in action and the NodeJs apps using it.
+
+\begin{figure}[!h]
+  \centering
+      \includegraphics[width=1\textwidth]{Figures/proto3-final.png}
+  \caption[DynamiCrypt services in action]{DynamiCrypt services in action}
+  \label{fig:proto3-final}
+\end{figure}
+\FloatBarrier
+
+Figure \ref{fig:proto3-final} shows a snapshot of the two DynamiCrypt services in action ( both API and sync-server share the same executable ), mostly synchronising.
+
+
+\begin{figure}[!h]
+  \centering
+      \includegraphics[width=1\textwidth]{Figures/proto4-final.png}
+  \caption[NodeJs Apps registering their names with the API]{NodeJs Apps registering their names with the API}
+  \label{fig:proto4-final}
+\end{figure}
+\FloatBarrier
+
+Figure \ref{fig:proto4-final} shows the two NodeJs apps about to register their names with the API.
+
+\begin{figure}[!h]
+  \centering
+      \includegraphics[width=1\textwidth]{Figures/proto5-final.png}
+  \caption[NodeJs Apps sharing details]{NodeJs Apps sharing details}
+  \label{fig:proto5-final}
+\end{figure}
+\FloatBarrier
+Figure \ref{fig:proto5-final} shows the left NodeJs app about to connect to the right NodeJs app and share details.
+
+\begin{figure}[!h]
+  \centering
+      \includegraphics[width=1\textwidth]{Figures/proto2-final.png}
+  \caption[Tree Parity Machines Logs]{Tree Parity Machines Logs}
+  \label{fig:proto2-final}
+\end{figure}
+\FloatBarrier
+
+Figure \ref{fig:proto2-final} shows a snapshot of the tree parity machines logs for a service called service1 and another service called app2. Both of these are synchronising with each other therefore they produce the same keys.  
+
+\begin{figure}[!h]
+  \centering
+      \includegraphics[width=1\textwidth]{Figures/proto6-final.png}
+  \caption[Encryption / Decryption mode 2 part 2]{Encryption / Decryption mode 2 part 2}
+  \label{fig:proto6-final}
+\end{figure}
+\FloatBarrier
+Figure \ref{fig:proto6-final} shows the left NodeJs app about to send a message to the API to be encrypted and forward the information received from the API to the right NodeJs app for decryption. The right NodeJs app will call the API to decrypt it.
+
+\begin{figure}[!h]
+  \centering
+      \includegraphics[width=1\textwidth]{Figures/proto1-final.png}
+  \caption[NodeJs apps after sending multiple encrypted messages to each other]{NodeJs apps after sending multiple encrypted messages to each other}
+  \label{fig:proto1-final}
+\end{figure}
+\FloatBarrier
+
+Figure \ref{fig:proto1-final} shows the two NodeJs apps after sending multiple encrypted messages to each other.
