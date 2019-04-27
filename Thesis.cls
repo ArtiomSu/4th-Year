@@ -140,20 +140,20 @@
 \usepackage{rotating}
 \usepackage{listings}
 \usepackage{lstpatch}
-%\lstset{captionpos=b,
-%        frame=tb,
-%        basicstyle=\scriptsize\ttfamily,
-%        showstringspaces=false,
-%        keepspaces=true}
-%\lstdefinestyle{matlab} {
-%        language=Matlab,
-%        keywordstyle=\color{black},
-%        commentstyle=\color[rgb]{0,0,0}\em,
-%        stringstyle=\color[rgb]{0,0,0} }
-%\usepackage[pdfpagemode={UseOutlines},bookmarks=true,bookmarksopen=true,
-%   bookmarksopenlevel=0,bookmarksnumbered=true,hypertexnames=false,
-%   colorlinks,linkcolor={black},citecolor={blue},urlcolor={blue},
-%   pdfstartview={FitV},unicode,breaklinks=true]{hyperref}
+\lstset{captionpos=b,
+        frame=tb,
+        basicstyle=\scriptsize\ttfamily,
+        showstringspaces=false,
+        keepspaces=true}
+\lstdefinestyle{matlab} {
+        language=Matlab,
+        keywordstyle=\color{black},
+        commentstyle=\color[rgb]{0,0,0}\em,
+        stringstyle=\color[rgb]{0,0,0} }
+\usepackage[pdfpagemode={UseOutlines},bookmarks=true,bookmarksopen=true,
+   bookmarksopenlevel=0,bookmarksnumbered=true,hypertexnames=false,
+   colorlinks,linkcolor={black},citecolor={blue},urlcolor={blue},
+   pdfstartview={FitV},unicode,breaklinks=true]{hyperref}
 \usepackage{xcolor}
 \lstset { %
     language=C++,
