@@ -1,0 +1,43 @@
+\contentsline {chapter}{Declaration of Authorship}{i}{dummy.1}% 
+\vspace {1em}
+\contentsline {chapter}{Abstract}{ii}{dummy.2}% 
+\vspace {1em}
+\contentsline {chapter}{Acknowledgements}{iii}{dummy.3}% 
+\vspace {1em}
+\contentsline {chapter}{List of Figures}{vi}{chapter*.5}% 
+\contentsline {chapter}{List of Tables}{x}{chapter*.6}% 
+\contentsline {chapter}{Abbreviations}{xi}{dummy.7}% 
+\vspace {2em}
+\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.10}% 
+\contentsline {section}{\numberline {1.1}Motivation}{1}{section.11}% 
+\contentsline {section}{\numberline {1.2}Contribution}{2}{section.12}% 
+\contentsline {section}{\numberline {1.3}Structure of This Document}{2}{section.13}% 
+\contentsline {chapter}{\numberline {2}Background}{4}{chapter.14}% 
+\contentsline {section}{\numberline {2.1}Thematic Area within Computer Science}{4}{section.15}% 
+\contentsline {section}{\numberline {2.2}Review of the thematic area}{10}{section.21}% 
+\contentsline {chapter}{\numberline {3}DynamiCrypt}{18}{chapter.37}% 
+\contentsline {section}{\numberline {3.1}Problem Definition}{18}{section.38}% 
+\contentsline {section}{\numberline {3.2}Objectives}{19}{section.39}% 
+\contentsline {section}{\numberline {3.3}Functional Requirements}{19}{section.47}% 
+\contentsline {section}{\numberline {3.4}Non-Functional Requirements}{20}{section.56}% 
+\contentsline {chapter}{\numberline {4}Implementation Approach}{21}{chapter.66}% 
+\contentsline {section}{\numberline {4.1}Architecture}{21}{section.67}% 
+\contentsline {section}{\numberline {4.2}Risk Assessment}{36}{section.83}% 
+\contentsline {section}{\numberline {4.3}Methodology}{37}{section.84}% 
+\contentsline {section}{\numberline {4.4}Implementation Plan Schedule}{38}{section.85}% 
+\contentsline {section}{\numberline {4.5}Evaluation}{39}{section.87}% 
+\contentsline {section}{\numberline {4.6}Prototype}{40}{section.88}% 
+\contentsline {chapter}{\numberline {5}Implementation}{47}{chapter.99}% 
+\contentsline {section}{\numberline {5.1}Difficulties Encountered}{47}{section.100}% 
+\contentsline {section}{\numberline {5.2}Actual Solution Approach}{51}{section.106}% 
+\contentsline {chapter}{\numberline {6}Testing and Evaluation}{70}{chapter.127}% 
+\contentsline {section}{\numberline {6.1}The Beginning}{70}{section.128}% 
+\contentsline {section}{\numberline {6.2}API}{72}{section.166}% 
+\contentsline {section}{\numberline {6.3}Sync-server}{102}{section.595}% 
+\contentsline {chapter}{\numberline {7}Discussion and Conclusions}{103}{chapter.596}% 
+\contentsline {section}{\numberline {7.1}Solution Review}{103}{section.597}% 
+\contentsline {section}{\numberline {7.2}Project Review}{103}{section.598}% 
+\contentsline {section}{\numberline {7.3}Conclusion}{104}{section.599}% 
+\contentsline {section}{\numberline {7.4}Future Work}{104}{section.600}% 
+\vspace {2em}
+\vspace {2em}
