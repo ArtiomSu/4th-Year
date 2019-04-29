@@ -34,10 +34,10 @@
 \contentsline {section}{\numberline {6.1}The Beginning}{70}{section.128}% 
 \contentsline {section}{\numberline {6.2}API}{72}{section.166}% 
 \contentsline {section}{\numberline {6.3}Sync-server}{102}{section.595}% 
-\contentsline {chapter}{\numberline {7}Discussion and Conclusions}{103}{chapter.596}% 
-\contentsline {section}{\numberline {7.1}Solution Review}{103}{section.597}% 
-\contentsline {section}{\numberline {7.2}Project Review}{103}{section.598}% 
-\contentsline {section}{\numberline {7.3}Conclusion}{104}{section.599}% 
-\contentsline {section}{\numberline {7.4}Future Work}{104}{section.600}% 
+\contentsline {chapter}{\numberline {7}Discussion and Conclusions}{104}{chapter.597}% 
+\contentsline {section}{\numberline {7.1}Solution Review}{104}{section.598}% 
+\contentsline {section}{\numberline {7.2}Project Review}{104}{section.599}% 
+\contentsline {section}{\numberline {7.3}Conclusion}{105}{section.600}% 
+\contentsline {section}{\numberline {7.4}Future Work}{105}{section.601}% 
 \vspace {2em}
 \vspace {2em}

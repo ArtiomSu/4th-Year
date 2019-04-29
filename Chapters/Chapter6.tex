@@ -821,7 +821,15 @@ Mode 1 therefore is perfect if you would like to send loads of data at regular i
 This will conclude the explanation and testing of aspects related to the API. If I were to explain everything related to the API it would take another 50 pages or so to go through everything therefore I selected the most impact full aspects of the API based on the outcomes of the project and left out most of the technical aspects. This section should have provided a good understanding of most of the more important operations of the API, it is recommended to browse through the GitHub repository for a full exposure of the API.
 
 \section{Sync-server}
-This section of the Document will cover the sync-server that is responsible for managing the Tree parity machines. 
+This section of the Document will cover the sync-server that is responsible for managing the Tree parity machines. As it was mentioned before the sync-server uses a custom peer to peer network where there are essentially two types of peers. One type is the one that waits for another peer to connect to it and the second type is the one that connects to the waiting peer. This is because there is no need to use a full fledged peer to peer network since for the purposes required for DynamiCrypt there is no need for all the other features that come with a proper peer to peer network like peer discovery and such.
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=1\textwidth]{Figures/sync_code_flow-modded.png}
+	\caption[Asynchronous flow diagram of peer]{Asynchronous flow diagram of peer}
+	\label{fig:s1}
+\end{figure}
+\FloatBarrier
 
 
 
