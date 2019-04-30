@@ -821,7 +821,51 @@ Mode 1 therefore is perfect if you would like to send loads of data at regular i
 This will conclude the explanation and testing of aspects related to the API. If I were to explain everything related to the API it would take another 50 pages or so to go through everything therefore I selected the most impact full aspects of the API based on the outcomes of the project and left out most of the technical aspects. This section should have provided a good understanding of most of the more important operations of the API, it is recommended to browse through the GitHub repository for a full exposure of the API.
 
 \section{Sync-server}
-This section of the Document will cover the sync-server that is responsible for managing the Tree parity machines. As it was mentioned before the sync-server uses a custom peer to peer network where there are essentially two types of peers. One type is the one that waits for another peer to connect to it and the second type is the one that connects to the waiting peer. This is because there is no need to use a full fledged peer to peer network since for the purposes required for DynamiCrypt there is no need for all the other features that come with a proper peer to peer network like peer discovery and such.
+This section of the Document will cover the sync-server that is responsible for managing the Tree parity machines. As it was mentioned before the sync-server uses a custom peer to peer network where there are essentially two types of peers. One type is the one that waits for another peer to connect to it and the second type is the one that connects to the waiting peer. This is because there is no need to use a full fledged peer to peer network for the purposes required for DynamiCrypt there is no need for all the other features that come with a proper peer to peer network like peer discovery and such.
+
+Since I used Boost Asio for the sync-server it is slightly different in the way the API was written since that used Pistache for networking. With boost asio a call back asynchronous architecture was used, Boost Asio also supports futures and promises however they were not covered deeply in the Book I used to learn Boost Asio. Nevertheless call backs are perfectly fine and efficient. 
+
+The class that contains all of the interactions with sockets and directly with the network is the peer class. There is actually no such a thing as Sync-server code wise, I just refer to everything else that is not the API and not the Tree Parity Machine as Sync-server. This is because there are many peer objects stored in a vector which is global and there are functions for creating new peers, updating current and deleting unused peers inside definitions.cpp, which is not a class its just another source file from which some other class can call functions from if they included the appropriate header definitions.hpp.
+
+As mentioned before there are two types of peers the only difference between these two is in the start function as seen here.
+\begin{lstlisting}
+void peer::start(std::string service_name, std::string partner_name){
+	{ boost::recursive_mutex::scoped_lock lk(read_lock);
+		peers.push_back( shared_from_this());
+	}
+	started_ = true;
+	service_name_ = service_name;
+	if(sock_using_ep){ // this makes the connection so write straight away
+		//endpoint_(ip::address::from_string(ip_address_), ip_port_);
+		endpoint_ = boost::make_shared<boost::asio::ip::tcp::endpoint>(boost::asio::ip::address::from_string(ip_address_), ip_port_);
+		sock_.async_connect(*endpoint_, MEM_FN3(on_connect,_1,service_name,partner_name));
+	} else { // this will listen to connection so read.
+		do_read();
+	}
+}
+\end{lstlisting}
+As you can see the variable sock-using-ep determines which type of peer this is. This is set when creating a peer object and basically means is the socket that this peer will use be of type endpoint or not. If so then the address and port of another peer on the network will be loaded up and an asynchronous connection is made to the other peer.
+\begin{lstlisting}
+sock_.async_connect(*endpoint_, MEM_FN3(on_connect,_1,service_name,partner_name));
+\end{lstlisting}
+Because call backs are used a callback function must be provided which runs when the peer establishes a TCP connection with another peer. This call back function is on-connect, the service name and partner name are also passed in to be verified by the other peer ( more on this later ). 
+If the peer is of type waiting then it simply waits for a peer to connect to it on the do-read function.
+\begin{lstlisting}
+void peer::do_read(){
+	{ boost::recursive_mutex::scoped_lock lk(read_lock);
+		async_read(sock_,  boost::asio::buffer(read_buffer_), MEM_FN2(read_complete,_1,_2), MEM_FN2(on_read,_1,_2));
+	}
+}
+\end{lstlisting}
+This read function performs an asynchronous read operation this time there are two call back functions read complete and on read, this is required because Boost asio doesn't know when all of the data is sent because you can configure it anyway you want. read complete basically scans the buffer for a newline character as that is what is set to determine the end of the TCP message and returns a boolean.
+\begin{lstlisting}
+size_t peer::read_complete(const boost::system::error_code & err, size_t bytes){
+	if ( err) return 0;
+	bool found = std::find(read_buffer_, read_buffer_ + bytes, '\n') < read_buffer_ + bytes;
+	return found ? 0 : 1;
+}
+\end{lstlisting}
+When this returns 1 Boost Asio then knows that the message has been fully read and calls the on read function which can then access the read buffer and perform calculations on the message.
 
 \begin{figure}[!h]
 	\centering
@@ -831,6 +875,50 @@ This section of the Document will cover the sync-server that is responsible for 
 \end{figure}
 \FloatBarrier
 
+Before continuing with the rest of the operations a quick overview of the asynchronous code flow is presented in figure \ref{fig:s1}. The two boxes represent the two different peers and the order of the asynchronous operations that they follow. 
+The connecting peer after connecting to a reading peer prepares a packet and and calls the do write operation. After the do write operation finishes writing all of the data to the socket on write is called which then calls do read, then read complete gets called multiple times until a newline character is detected, then on read is called and there are other functions called from on read that call do write and the cycle continues.
+
+The accepting peer as referred in the diagram is the waiting peer. It is important for the connecting peer and waiting peer to not read or write to the socket at the same time, so you will notice that every time the connecting peer is writing the accepting peer is reading and visa-versa.  
+The waiting peer starts of its cycle by reading since there is no data on the socket while there is no peer that is about to connect it simply does nothing. Boost Asio in the background does check periodically for any data in the socket but this behaviour is hidden from the developer. After a peer connects to the waiting peer it immediately starts checking if the message was fully sent by repeatedly calling read complete when a new byte arrives. When all the data is received on read is called which creates a new message and calls do write when the message is fully written on write is called which once again calls do read and the cycle once again continues.
+
+Currently there are four types of messages or at least four different categories of messages. Messages are constructed in the following fashion message-type + tab character + data + tab character + data + ...... + new line character.
+
+Messages of message-type 1 are used for sending synchronisation data used to synchronise tree parity machines.
+
+Messages of message-type 2 are used for when the peer initially connects to another peer this is the first message in the conversation.
+
+Messages of message-type 3 are essentially a reply to message-type 1 with more information needed to setup the tree parity machines.
+
+Messages of message-type 4 are for resetting tree parity machines if a key is found, or if the tree parity machines reached the maximum iteration count
+
+Bellow is a snippet of all the different types of messages and the function from which they are called from.
+
+\begin{lstlisting}
+Note the << operator in C++ just adds data to a buffer so ss << "1" << variable << "string" would be the same as ss = "1" + variable + "string" in something like python for example.
+
+
+// called from std::string TpmNetworkHandler::sync_tpm_message_one(int tpm_id)
+ss << "1\t" << tpm_id << "\t" << tpm_networks_[index].id() << "\t" << tpm_networks_[index].iteration() << "\t" << random_input_vector << "\t" << tpm_result << "\t" << 1 << "\n";
+  
+  
+// called from std::string TpmNetworkHandler::sync_tpm_message_one_advanced(int tpm_id, std::vector<std::string> & parsed_msg)
+ss << "1\t" << tpm_id << "\t" << tpm_networks_[index].id() << "\t" << tpm_networks_[index].iteration() <<  "\t" << random_input_vector << "\t" << tpm_result << "\t" << message_type_to_process  << "\t" << tell_machine_to_update<< "\t" << old_input_vector << "\t" << key_hash << "\t" << random_input_for_key << "\n";
+
+
+// called from void peer::on_connect(const error_code & err, std::string service_name, std::string partner_name)
+ss << "2\t" << id << "\t" << tpm_handler.get_iteration(id) << "\t" << service_name << "\t" << partner_name << "\n";
+
+// called from void peer::on_init(std::vector<std::string> & parsed_msg)
+ss << "3\t" << id << "\t" << tpm_handler.get_iteration(id) << "\t" << tpm_handler.get_partner(id) << "\n";
+
+
+// called from void peer::on_sync(std::vector<std::string> & parsed_msg) and void peer::on_linking(std::vector<std::string> & parsed_msg) also uses the same parameters
+ss << "4\t" << tpm_id << "\t" << tpm_handler.get_iteration(tpm_id) << "\t" << 0 << "\t" << 0 << "\n";
+
+
+// called from std::string TpmNetworkHandler::sync_tpm_message_one_advanced(int tpm_id, std::vector<std::string> & parsed_msg)
+ss << "4\t" << tpm_id << "\t" << tpm_networks_[index].iteration() << "\t" << 0 << "\t" << 1 << "\n";
+\end{lstlisting}
 
 
 
