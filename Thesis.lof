@@ -74,4 +74,15 @@
 \contentsline {figure}{\numberline {6.19}{\ignorespaces Encryption / Decryption mode 2 part 1}}{101}{figure.caption.593}% 
 \contentsline {figure}{\numberline {6.20}{\ignorespaces Encryption / Decryption mode 2 part 2}}{101}{figure.caption.594}% 
 \contentsline {figure}{\numberline {6.21}{\ignorespaces Asynchronous flow diagram of peer}}{104}{figure.caption.625}% 
+\contentsline {figure}{\numberline {6.22}{\ignorespaces DynamiCrypt execution arguments}}{108}{figure.caption.684}% 
+\contentsline {figure}{\numberline {6.23}{\ignorespaces peer message type 2}}{109}{figure.caption.708}% 
+\contentsline {figure}{\numberline {6.24}{\ignorespaces peer message type 3}}{110}{figure.caption.732}% 
+\contentsline {figure}{\numberline {6.25}{\ignorespaces peer message type 1}}{112}{figure.caption.790}% 
+\contentsline {figure}{\numberline {6.26}{\ignorespaces peer message type 1 advanced}}{116}{figure.caption.885}% 
+\contentsline {figure}{\numberline {6.27}{\ignorespaces peer message type 1 advanced with processing type 2}}{120}{figure.caption.981}% 
+\contentsline {figure}{\numberline {6.28}{\ignorespaces Initial logs of tree parity machines}}{122}{figure.caption.1019}% 
+\contentsline {figure}{\numberline {6.29}{\ignorespaces Output of python script}}{142}{figure.caption.1623}% 
+\contentsline {figure}{\numberline {6.30}{\ignorespaces Graph of iterations against time for service1 tree parity machine}}{143}{figure.caption.1624}% 
+\contentsline {figure}{\numberline {6.31}{\ignorespaces Graph of iterations against time for app2 tree parity machine}}{143}{figure.caption.1625}% 
+\contentsline {figure}{\numberline {6.32}{\ignorespaces Beginning of tree parity machine logs}}{144}{figure.caption.1626}% 
 \addvspace {10\p@ }
