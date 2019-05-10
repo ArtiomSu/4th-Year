@@ -1,18 +1,112 @@
 \chapter{Discussion and Conclusions}
 \label{chap:conclusions}
 \lhead{\emph{Discussion and Conclusions}}
-In this chapter, you should expand upon (and initially reflect upon) the discussion and conclusion of the research phase of the project. The expectation here is that you should discuss the results presented in the previous evaluation section of the project in their totality (i.e. as a whole) from which you will then draw clear conclusions both on the quantitative and qualitative aspects of the overall project. This chapter should be a about 2000 words long (5 pages of text - 1600 words of discussion and 400 words of conclusion). This may vary depending on quality. The conclusion section of this report should conclude the project.
-
-Some suggested sections (the nature of this chapter should be discussed in detail with your term 2 supervisor):
-
+%In this chapter, you should expand upon (and initially reflect upon) the discussion and conclusion of the research phase of the project. The expectation here is that you should discuss the results presented in the previous evaluation section of the project in their totality (i.e. as a whole) from which you will then draw clear conclusions both on the quantitative and qualitative aspects of the overall project. This chapter should be a about 2000 words long (5 pages of text - 1600 words of discussion and 400 words of conclusion). This may vary depending on quality. The conclusion section of this report should conclude the project.
+%
+%Some suggested sections (the nature of this chapter should be discussed in detail with your term 2 supervisor):
+%
 \section{Solution Review}
-Discuss how well your solution solves the problem, based on your results from the evaluation chapter.
+%Discuss how well your solution solves the problem, based on your results from the evaluation chapter.
+The solution developed turned out to be successful and works well for an alpha version of the product. There are a number of improvements that still need to be made to use the system to its full potential. There are also a number of security features that need to be incorporated in order to prevent spoofing and denial of service attacks against peers, which will be discussed in the future work section.  
+
+The solution successfully demonstrates the use of dynamic cryptography in a full fledged system containing the API, peer to peer network and the NodeJs App that uses said API in a simple messaging type of application. There are a number of encryption methods available that are dynamic in nature which was not planned initially however when coding the project it just seemed right to include different ways of using dynamic cryptography for various needs of the user. Currently DynamiCrypt supports two modes of dynamic encrypt, both were tested and work as expected.
+
+The solution also demonstrates that by using tree parity machines it is possible to avoid public key crypto systems such as RSA. The design of DynamiCrypt also ensures that the keys never leave the process therefore the clients using the API have no idea what so ever about the keys or anything to do with the key store. The client only witnesses data going into the API and returning as cipher text and sending ciphertext to the API in return for the plaintext.
+
+The solution turned out to be very performance orientated and performed faster that I have originally expected when it comes to generating keys. Originally I stated that it was acceptable for it to take around two seconds to generate a key however the current solution manages to generate a key in roughly one second.
+
 
 \section{Project Review}
-Discuss how well you addressed the project, and what you might do differently if you were to do it again. Make sure to identify how you handled any problems that arose during the project. Identify key skills that you learnt during the project, and clearly describe how you applied these, and how you might apply them differently if you were to do a similar project.
+%Discuss how well you addressed the project, and what you might do differently if you were to do it again. Make sure to identify how you handled any problems that arose during the project. Identify key skills that you learnt during the project, and clearly describe how you applied these, and how you might apply them differently if you were to do a similar project.
+The solution resulted in a completely different technique as originally described in semester one. This was more my fault as I believed the synchronisation could be done through the API alone and no other networking aspect was required. Fortunately after spending a lot of time learning how Boost Asio works I was able to create a peer to peer network capable of achieving the synchronisation task at a much quicker rate than it would be possible by simply using the Pistache framework. This was unexpected and for a few weeks I felt like I was behind as I was learning how to use Boost Asio however this slight setback didn't cause the project to fail. 
 
-\section{Conclusion}
-Enumerate the main conclusions you have got in terms of background, problem description and the solution approach you have come up with. Detail your primary and any secondary conclusions from your project.
+Overall I feel like I addressed the project quite well in the time frame available. I managed to create a functional API, a peer to peer network that is capable of handling multiple tree parity machines and a functional NodeJs app that uses the API in order to send encrypted messages between other NodeJs apps.
+
+If I were to redo the project again, I would use Boost Asio for all of my networking needs as the API would be able to interface with the sync-server much more efficiently without the need of global objects. This will be implemented later on in a future version of DynamiCrypt but it would be handy to do it from the start.
+
+Another aspect of the project I would do differently if starting again is to change the way the NodeJS apps register with the API. Currently is takes two API requests and multiple NodeJs to NodeJs requests before being able to begin synchronisation. This would take a while to plan out the way it should be done and perhaps a completely different method of doing it could be used.
+
+
+
+
 
 \section{Future Work}
-Discuss any proposals for completion of the project, or for enhancements, or for re-design of your solution or software. Enumerate all the things you would have wanted to do should you have more time to work on this project.
+%Discuss any proposals for completion of the project, or for enhancements, or for re-design of your solution or software. Enumerate all the things you would have wanted to do should you have more time to work on this project.
+DynamiCrypt is currently in early alpha stage, there are a large number of features and improvements that need to be made before I would be comfortable with people using DynamiCrypt as a real solution rather than a proof of concept. This section could go on for ever as software in general could continue to be constantly improved whether it is when someone finds a bug or some library you are using that receives an update and features being constantly requested by users, sections of any software can also be redesigned to become more efficient. 
+
+Therefore for this section the most important aspects of DynamiCrypt will be listed, which will be implemented in the next milestone which I plan to work on in my spare time after college.
+
+\begin{enumerate}
+	\item (Tree parity machine structure, query based synchronisation) Structure of the tree parity machines would need to be slightly tweaked and simplified. Currently the neurons, weights and input vector are stored in a custom dynamic array type of data structure, to improve performance this should be replaced with something more light weight than a class and the structure would need to be updated anyway for the introduction of query based synchronisation. Currently DynamiCrypt's tree parity machines synchronise based on a random input vector as I didn't have time to implement the ideal method. With query based synchronisation tree parity machines will synchronise much faster since the queries are based on the weights of the tree parity machines rather than simply a random vector. Using queries will also improve security since the tree parity machines will synchronise much faster than the attacker could learn using his own tree parity machines. This would be the first improvement made as the time to generate the key should decrease by a reasonable amount, currently it takes around one second to generate a key on average by using queries this should decrease by 20-30 percent as demonstrated by other research papers in this topic.
+	\item ( Peer data exchange ) Ideally when exchanging data between peers there should be confidentiality, integrity and authentication, and non-repudiation. Currently the peers just send raw TCP packets and trust that the peer that they are sending the data to is actually the peer they mean to communicate with. Provided that the attacker doesn't use any active attacks such as man in the middle attacks and sending custom built packets to the peers, otherwise the system currently is secure since the information sent over the network contains nothing relating to the key being generated so by purely listening to packets it would be unlikely to generate the key. In order to secure this from attacks such as man in the middle the peers would have to use some sort of MAC to provide integrity and authentication, and use digital signatures to provide non-repudiation.
+	\item ( API ) At the moment the API server and the peers are using different networking libraries while running in the same process. Currently this works ok however later on when more features and complex interactions between the API and the peers is introduced this might cause some issues. Ideally the API server should have been written using Boost Asio library however due to time constraints and the fact that using Pistache library for the API was a lot quicker since it is a much more higher level library it was chosen for the alpha version of DynamiCrypt. Therefore the API would need to be rebuilt from scratch using the Boost Asio library and will then integrate seamlessly with the peers thereby getting rid of some of the global objects that are currently used to communicate between the API and the peer.
+	The API would also need to have authentication implemented that way another localhost client would not be able to high jack the tree parity machines of the appropriate client.
+	\item ( Modes of encryption ) Currently DynamiCrypt supports two modes of encryption. I have planned to implement two more. Mode 3 will be able to use the same key n number of times, this is sort of in between mode 1 and mode 2 where mode 1 can potentially use the same key as many times as it wants and mode 2 the key is only ever used once. Mode 4 will be like an ultra secure mode where the message will be split into n chunks and each piece will be encrypted with a different key.
+	\item ( Multiple Tree parity machines per peer ) When synchronising a peer has one tree parity machine for each peer it is connected to. A more steady key income would occur if each peer was able to use lets say five tree parity machines per peer. An attempt was made to implement this feature and the code does handle multiple tree parity machines per peer the only issue is I was able to correctly setup the buffers and the data in the socket kept on becoming corrupted, in order to make sure the project was usable by the end of the semester I decided to implement this feature properly at a later date. 
+	\item ( Random generator) To initialise the random weights of tree parity machines and create the random input vector the random function is seeded with the input from /dev/urandom this works well however for a serious cryptographic system it is better to use a more sophisticated method which I have yet to figure out.
+\end{enumerate}
+	There are many more things that would be implemented at a later stage however the above would be the initial changes I would make for the next version of DynamiCrypt.
+	
+\section{Conclusion}
+%Enumerate the main conclusions you have got in terms of background, problem description and the solution approach you have come up with. Detail your primary and any secondary conclusions from your project.
+
+\section{Code and Demo}
+The code is available at the following GitHub link.
+\begin{lstlisting}
+https://github.com/ArtiomSu/DynamiCrypt
+\end{lstlisting}
+The demo is available on YouTube at the following link.
+\begin{lstlisting}
+https://www.youtube.com/watch?v=LsR4XsGrDCY
+\end{lstlisting}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
